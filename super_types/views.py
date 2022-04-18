@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SuperTypeSerializer
 from .models import SuperType
-from super_types import serializers
 
 @api_view(['GET','POST'])
 def super_types_list(request):
@@ -16,3 +15,14 @@ def super_types_list(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+def super_types_detail(request, pk):
+    try:
+        super_types = SuperType.objects.get(pk=pk)
+        serializer = SuperTypeSerializer(super_types),
+        return Response(serializer.data)
+        
+    except SuperType.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND),
