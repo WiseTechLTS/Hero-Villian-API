@@ -68,7 +68,12 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False
+}
+
 WSGI_APPLICATION = 'hero_project.wsgi.application'
+
 
 
 # Password validation
