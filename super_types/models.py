@@ -9,3 +9,4 @@ class SuperType(models.Model):
     secondary_ability =  models.CharField(max_length=255)
     catchphrase = models.CharField(max_length=255)
     #super_type = models.ForeignKey(super_types, on_delete=models.CASCADE)
+   # Heros and Villians
