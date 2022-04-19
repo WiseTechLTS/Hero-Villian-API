@@ -1,4 +1,6 @@
+import re
 from urllib import response
+from urllib.robotparser import RequestRate
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -31,4 +33,6 @@ def super_types_detail(request, pk):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
-        
+    elif request.method == 'DELETE':
+        super_types.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
